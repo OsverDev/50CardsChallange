@@ -10,7 +10,9 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         
-        VStack{
+        VStack(alignment: .leading){
+            Text("50 Playing Cards")
+                .font(.headline)
             TabView{
                 ForEach(0...49,id: \.self){ index in
                     
@@ -24,11 +26,17 @@ struct ContentView: View {
                         .resizable()
                         .scaledToFit())
                 }
+                
                     
                 
             }.frame(width: UIScreen.main.bounds.width/10*9, height: UIScreen.main.bounds.height/10*8, alignment: .center)
                 .cornerRadius(20)
-        }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .always)) // Makes tabview a swipable element.
+                .shadow(color: Color.black, radius: 10, x: 5, y: 5)
+                
+        }
+        .ignoresSafeArea()
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always)) // Makes tabview a swipable element.
+            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
         
     }
 }
